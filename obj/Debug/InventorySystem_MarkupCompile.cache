@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\App.xaml
-1219584333
-
-6-1338724631
+5-1853193533
+1-1410900496
+1084382171
 331593902846
-MainWindow.xaml;
+MainWindow.xaml;Pages\Admins.xaml;Pages\Items.xaml;Pages\Rooms.xaml;Views\InputField.xaml;
 
 False
 

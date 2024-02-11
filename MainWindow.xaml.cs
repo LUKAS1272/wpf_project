@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
+using Mysqlx;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design.Serialization;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -15,59 +17,81 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace InventorySystem
-{
+namespace InventorySystem {
     public partial class MainWindow : Window
     {
-        //MySqlConnection connection = new MySqlConnection($"server=127.0.0.1; database=inventory_system; Uid=root; password=;");
-        Data.DB database = new Data.DB();
+        Data.DB database = new Data.DB(); // Creates a DB object
 
         public MainWindow()
         {
             InitializeComponent();
-            error.Visibility = Visibility.Hidden;
-            success.Visibility = Visibility.Hidden;
+            main.Content = new Pages.Admins();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            try {
-                database.Open();
-                MySqlCommand command = database.PrepareCommand("SELECT * FROM test");
+        private void items_Click(object sender, RoutedEventArgs e)
+        { main.Content = new Pages.Items(); }
 
-                DataTable dt = new DataTable();
-                dt.Load(command.ExecuteReader());
-                dtGrid.DataContext = dt;
+        private void rooms_Click(object sender, RoutedEventArgs e)
+        { main.Content = new Pages.Rooms(); }
 
-                error.Visibility = Visibility.Hidden;
-                success.Visibility = Visibility.Visible;
-            } catch (Exception) {
-                error.Visibility = Visibility.Visible;
-                success.Visibility = Visibility.Hidden;
-            } finally {
-                database.Close();
-            }
-        }
+        private void admins_Click(object sender, RoutedEventArgs e)
+        { main.Content = new Pages.Admins(); }
 
-        private void AddRow_Click(object sender, RoutedEventArgs e)
-        {
-            try {
-                database.Open();
-                MySqlCommand command = database.PrepareCommand($"INSERT INTO test (username, email, password) VALUES ('{username.Text}', '{email.Text}', '{password.Text}')");
-                command.ExecuteNonQuery();
+        //private void Show_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        database.Open();
+        //        MySqlCommand command = database.PrepareCommand("SELECT * FROM test");
 
-                error.Visibility = Visibility.Hidden;
-                success.Visibility = Visibility.Visible;
+        //        DataTable dt = new DataTable();
+        //        dt.Load(command.ExecuteReader());
+        //        dtGrid.DataContext = dt;
 
-                username.Text = "";
-                email.Text = "";
-                password.Text = "";
-            } catch {
-                error.Visibility = Visibility.Visible;
-                success.Visibility = Visibility.Hidden;
-            } finally {
-                database.Close();
-            }
-        }
+        //        StatusLabel.Content = "Success - diplayed table contents";
+        //    }
+        //    catch (Exception error)
+        //    {
+        //        StatusLabel.Content = $"Error";
+        //    }
+        //    finally
+        //    {
+        //        database.Close();
+        //    }
+        //}
+
+        //private void AddRow_Click(object sender, RoutedEventArgs e)
+        //{
+
+        //    try
+        //    {
+        //        database.Open();
+
+        //        if (ValidateInput(new string[] { username.Text, email.Text, password.Text }))
+        //        {
+        //            MySqlCommand command = database.PrepareCommand($"INSERT INTO tet (username, email, password) VALUES ('{username.Text}', '{email.Text}', '{password.Text}')");
+        //            command.ExecuteNonQuery();
+
+        //            StatusLabel.Content = $"Success - added row ('{username.Text}', '{email.Text}', '{password.Text}')";
+
+        //            username.Text = "";
+        //            email.Text = "";
+        //            password.Text = "";
+        //        }
+        //        else
+        //        {
+        //            StatusLabel.Content = $"Error - not all inputs are filled";
+        //        }
+        //        return;
+        //    }
+        //    catch (Exception error)
+        //    {
+        //        StatusLabel.Content = $"Error - {error.ToString()}";
+        //    }
+        //    finally
+        //    {
+        //        database.Close();
+        //    }
+        //}
     }
 }

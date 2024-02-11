@@ -45,3 +45,13 @@ C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\bin\Debug\System.Num
 C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\obj\Debug\InventorySystem.csproj.CopyComplete
+C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\obj\Debug\Views\InputField.g.cs
+C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\obj\Debug\Views\InputField.baml
+C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\obj\Debug\Pages\Admins.g.cs
+C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\obj\Debug\Pages\Items.g.cs
+C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\obj\Debug\Pages\Rooms.g.cs
+C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\obj\Debug\Pages\Admins.baml
+C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\obj\Debug\Pages\Items.baml
+C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\obj\Debug\Pages\Rooms.baml
+C:\Users\zeryk\source\repos\InventorySystem\InventorySystem\obj\Debug\InventorySystem_Content.g.cs

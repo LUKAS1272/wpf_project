@@ -22,6 +22,12 @@ namespace InventorySystem.Data
             connection.Close();
         }
 
+        public void Reopen()
+        {
+            Close();
+            Open();
+        }
+
         public MySqlCommand PrepareCommand(string cmd)
         {
             return new MySqlCommand(cmd, connection);
