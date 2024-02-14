@@ -5,21 +5,21 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:InventorySystem.Views"
              mc:Ignorable="d" 
-             Height="100" d:DesignWidth="250">
+             d:DesignWidth="250">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="Auto" />
             <RowDefinition />
         </Grid.RowDefinitions>
 
         <Label x:Name="inputLabel" Content="{Binding Label}" FontSize="16" VerticalAlignment="Bottom" />
 
         <Grid Background="#eee" Grid.Row="1">
-            <TextBox x:Name="inputTxt" VerticalContentAlignment="Center" Background="Transparent" FontWeight="Light"
+            <TextBox x:Name="inputTxt" VerticalContentAlignment="Center" Background="Transparent" FontWeight="Light" IsEnabled="{Binding Enabled}"
                      TextChanged="inputTxt_TextChanged" FontSize="16" Padding="7 0 0 0" BorderThickness="0" />
             <TextBlock x:Name="inputPlaceholder" Text="{Binding Placeholder}" FontSize="16" FontWeight="Light"
-                       VerticalAlignment="Center" Margin="10 0 0 0" Foreground="#999" Panel.ZIndex="-1" />
-            <Button x:Name="clearButton" Width="30" Content="X" HorizontalAlignment="Right" FontSize="16" FontWeight="Light"
+                       VerticalAlignment="Center" Margin="10 10 0 10" Foreground="#999" Panel.ZIndex="-1" />
+            <Button x:Name="clearButton" Width="30" Content="X" HorizontalAlignment="Right" FontSize="16" FontWeight="Light" IsEnabled="{Binding Enabled}"
                     Background="Transparent" BorderThickness="0" Foreground="#999" Click="clearButton_Click" />
         </Grid>
     </Grid>

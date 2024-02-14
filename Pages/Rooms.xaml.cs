@@ -41,8 +41,7 @@ namespace InventorySystem.Pages
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 cbAdmins3.Items.Add("No filter");
-                while (reader.Read())
-                {
+                while (reader.Read()) {
                     string name = reader["name"].ToString();
                     cbAdmins.Items.Add($"{name[0].ToString().ToUpper()}{name.Substring(1)}");
                     cbAdmins2.Items.Add($"{name[0].ToString().ToUpper()}{name.Substring(1)}");

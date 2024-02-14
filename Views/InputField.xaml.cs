@@ -52,6 +52,19 @@ namespace InventorySystem.Views
             }
         }
 
+        private bool enabled;
+
+        public bool Enabled
+        {
+            get { return enabled; }
+            set {
+                enabled = value;
+                inputTxt.IsEnabled = enabled;
+                clearButton.IsEnabled = enabled;
+            }
+        }
+
+
 
 
 

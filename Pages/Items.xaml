@@ -4,12 +4,151 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:InventorySystem.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      xmlns:views="clr-namespace:InventorySystem.Views"
+      mc:Ignorable="d" d:DesignWidth="1920" d:DesignHeight="1080"
       Title="Items">
 
     <Grid>
-        <TextBlock Text="Items" />
-        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Items" FontSize="40" FontWeight="Bold" HorizontalAlignment="Center" Margin="0, 45, 0, 10" />
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <!-- Change item properties -->
+                <Border Padding="10, 15" BorderBrush="#000" BorderThickness="1" Margin="15, 10, 5, 5" CornerRadius="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Change item properties" FontSize="25" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0, 0, 0, 10" />
+                        <TextBlock Text="No item chosen - please choose an item to edit" FontSize="20" Margin="0, 0, 0, 10" Name="editingStatus" Grid.Row="1" HorizontalAlignment="Center" />
+                        <views:InputField Placeholder="Enter item price (integer)" Label="Price" x:Name="priceEdit" Grid.Row="2" Margin="0, 10, 0, 0" Enabled="False" />
+
+                        <Grid Grid.Row="3" Margin="0, 10, 0, 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Item's room" FontSize="16" />
+                            <ComboBox Name="cbRooms" BorderThickness="0" FontSize="16" VerticalContentAlignment="Center" Padding="10" Grid.Row="1"  />
+                        </Grid>
+
+                        <Button Grid.Row="4" Content="Update" FontSize="16" Padding="35, 10" BorderThickness="0" Name="changePropsBtn" Click="changePropsBtn_Click" HorizontalAlignment="Right" Margin="0, 15, 0, 0" />
+                    </Grid>
+                </Border>
+
+                <!-- Items list -->
+                <Border Grid.Row="1" BorderThickness="1" BorderBrush="#000" CornerRadius="5" Margin="15, 5, 5, 15" Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Items list" FontSize="25" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Top" />
+
+                        <Grid Grid.Row="1" Margin="0, 10, 0, 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Room filter" FontSize="20" VerticalAlignment="Center" Margin="5, 0, 10, 0" />
+                            <ComboBox Name="cbRooms3" Grid.Column="1" VerticalAlignment="Center" BorderThickness="0" FontSize="15" SelectionChanged="cbRooms3_SelectionChanged" />
+                        </Grid>
+
+                        <Grid Grid.Row="2" Margin="0, 10, 0, 0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Admin filter" FontSize="20" VerticalAlignment="Center" Margin="5, 0, 10, 0" />
+                            <ComboBox Name="cbAdmin" Grid.Column="1" VerticalAlignment="Center" BorderThickness="0" FontSize="15" SelectionChanged="cbAdmin_SelectionChanged" />
+                        </Grid>
+
+                        <Grid Grid.Row="3" Margin="0, 10, 0, 20">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Date filter" FontSize="20" VerticalAlignment="Center" Margin="5, 0, 10, 0" />
+                            <DatePicker Grid.Column="1" FontSize="15" Name="date" SelectedDateChanged="date_SelectedDateChanged" Focusable="False" />
+                            <Button Grid.Column="2" Content="Delete filter" Margin="10, 0, 0, 0" FontSize="14" Padding="20, 5" BorderThickness="0" Name="deleteDateFilter" Click="deleteDateFilter_Click" />
+                        </Grid>
+
+                        <ListView Name="lvItems" SelectionChanged="lvItems_SelectionChanged" FontSize="20" Margin="0, 10, 0, 0" BorderThickness="0" Grid.Row="4" FontWeight="Light" />
+                        <Button Grid.Row="5" Content="Delete" Margin="0, 5, 5, 0" FontSize="17" Padding="30, 10" BorderThickness="0" Name="deleteItem" Click="deleteItem_Click" />
+                    </Grid>
+                </Border>
+
+                <!-- Manage items -->
+                <Border Grid.Column="1" BorderThickness="1" BorderBrush="#000" Margin="5, 10, 15, 5" CornerRadius="5" Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Manage items" FontSize="25" FontWeight="Medium" HorizontalAlignment="Center" />
+                        <views:InputField Placeholder="Enter an item name" Label="Item name" Margin="0, 10, 0, 0" x:Name="itemName" Grid.Row="1" />
+                        <views:InputField Placeholder="Enter item price (integer)" Label="Price" x:Name="itemPrice" Grid.Row="2" Margin="0, 10, 0, 0" />
+
+                        <Grid Grid.Row="3" Margin="0, 10, 0, 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label Content="Item's room" FontSize="16" />
+                            <ComboBox Name="cbRooms2" BorderThickness="0" FontSize="16" VerticalContentAlignment="Center" Padding="10" Grid.Row="1"  />
+                        </Grid>
+
+                        <Button Grid.Row="4" Content="Add" FontSize="16" Padding="35, 10" BorderThickness="0" Name="addItem" Click="addItem_Click" HorizontalAlignment="Right" Margin="0, 15, 0, 0" />
+                    </Grid>
+                </Border>
+
+                <!-- Status message -->
+                <Border Grid.Row="1" Grid.Column="1" BorderBrush="#000" BorderThickness="1" CornerRadius="5" Margin="5, 5, 15, 15" Padding="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+
+                        <Label Content="Status messages" FontSize="25" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Top" />
+                        <TextBlock Name="itemStatus" Grid.Row="1" FontSize="15" Margin="0, 10, 0, 0" TextWrapping="Wrap" />
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
     </Grid>
 </Page>

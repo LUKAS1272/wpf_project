@@ -29,20 +29,28 @@
 
             <!-- Change admin -->
             <Border Padding="10, 15" BorderBrush="#000" BorderThickness="1" Margin="15, 10, 5, 5" CornerRadius="5">
-                <Grid VerticalAlignment="Center">
+                <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
+                        <RowDefinition />
+                        <RowDefinition />
                     </Grid.RowDefinitions>
+                    
+                    <Label Content="Change the room admin" FontSize="25" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0, 0, 0, 20" />
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
 
-                    <TextBlock Text="No room chosen - please choose a room to edit" FontSize="20" Margin="0, 0, 0, 10" FontWeight="SemiBold" Name="editingStatus" />
-                    <ComboBox Name="cbAdmins" Grid.Row="1" Margin="0, 0, 10, 0" IsEnabled="False" FontSize="20" VerticalContentAlignment="Center" BorderThickness="0" Padding="10, 0" />
-                    <Button Name="changeAdminBtn" Content="Change admin" IsEnabled="False" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Padding="30 12" FontSize="20" Click="changeAdminBtn_Click" BorderThickness="0" />
+                        <TextBlock Text="No room chosen - please choose a room to edit" FontSize="20" Margin="0, 0, 0, 10" FontWeight="SemiBold" Name="editingStatus" />
+                        <ComboBox Name="cbAdmins" Grid.Row="1" Margin="0, 0, 10, 0" IsEnabled="False" FontSize="20" VerticalContentAlignment="Center" BorderThickness="0" Padding="10, 0" />
+                        <Button Name="changeAdminBtn" Content="Change admin" IsEnabled="False" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Right" Padding="30 12" FontSize="20" Click="changeAdminBtn_Click" BorderThickness="0" />
+                    </Grid>
                 </Grid>
             </Border>
 
@@ -68,7 +76,7 @@
                         <ComboBox Name="cbAdmins3" Grid.Column="1" VerticalAlignment="Center" BorderThickness="0" FontSize="15" SelectionChanged="cbAdmins3_SelectionChanged" />
                     </Grid>
                     
-                    <ListView Name="lvRooms" SelectionChanged="lvRooms_SelectionChanged" FontSize="20" Margin="0, 10, 0, 0" BorderThickness="0" Grid.Row="2" />
+                    <ListView Name="lvRooms" SelectionChanged="lvRooms_SelectionChanged" FontSize="20" Margin="0, 10, 0, 0" BorderThickness="0" Grid.Row="2" FontWeight="Light" />
                     <Button Grid.Row="3" Content="Delete" Margin="0, 5, 5, 0" FontSize="17" Padding="30, 10" BorderThickness="0" Name="deleteRoom" Click="deleteRoom_Click" />
                 </Grid>
             </Border>
@@ -80,20 +88,23 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <Label Content="Manage rooms" FontSize="25" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Top" />
-                    <views:InputField Placeholder="Enter a room name" Label="Room name" Margin="0, 25, 0, 0" x:Name="addRoomInput" />
+                    <views:InputField Placeholder="Enter a room name" Label="Room name" Margin="0, 10, 0, 0" x:Name="addRoomInput" Grid.Row="1" />
 
-                    <Grid Grid.Row="2" Margin="0, 5, 0, 0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="2" Margin="0, 10, 0, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                        <ComboBox Name="cbAdmins2" Margin="0, 0, 5, 0" BorderThickness="0" FontSize="15" VerticalContentAlignment="Center" Padding="10, 0" />
-                        <Button Grid.Column="1" Content="Add" FontSize="17" Padding="30, 10" BorderThickness="0" Name="addRoom" Click="addRoom_Click" />
+                        <Label Content="Room admin" FontSize="16" />
+                        <ComboBox Name="cbAdmins2" BorderThickness="0" FontSize="16" VerticalContentAlignment="Center" Padding="10" Grid.Row="1"  />
                     </Grid>
+                    
+                    <Button Grid.Row="3" HorizontalAlignment="Right" Content="Add" FontSize="16" Margin="0, 15, 0, 0" Padding="35, 10" BorderThickness="0" Name="addRoom" Click="addRoom_Click" />
                 </Grid>
             </Border>
 
